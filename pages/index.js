@@ -23,6 +23,7 @@ export default function Home() {
 
   const loadNewData = () => {
     setPage(currentPage + 1);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -33,8 +34,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-2xl">
+        <div className="flex min-h-full items-center justify-center py-12 px-4">
+          <div className="w-full">
             <ul className="flex flex-col space-y-6 animate__animated animate__fadeInDown">
               {data.map((result) => {
                 const { id, title, company, location, contract_time, created } =
