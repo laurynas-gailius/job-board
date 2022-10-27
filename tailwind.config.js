@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minWidth: {
+        '20': '5rem',
+      },
       colors: {
         'primary': '#00DC92',
       }

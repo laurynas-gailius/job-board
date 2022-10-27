@@ -7,8 +7,8 @@ const Job = ({
   contract_time,
   created,
 }) => {
-  const date1 = dayjs(created);
-  const date2 = dayjs(new Date());
+
+
 
   return (
     <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl border bg-white border-gray-200 shadow-sm hover:shadow-md dark:shadow-md dark:bg-gray-800  dark:border-gray-700 hover:cursor-pointer transition hover:scale-105 duration-300">
@@ -31,7 +31,7 @@ const Job = ({
           </div>
           <div className="flex items-end">
             <p className="text-sm text-gray-400 dark:text-gray-500">
-              {date2.diff(date1, "month")} day(s) ago
+              {created}
             </p>
           </div>
         </div>

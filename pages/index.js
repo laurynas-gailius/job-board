@@ -3,6 +3,7 @@ import Head from "next/head";
 import Job from "../components/Job";
 import JobCardLoader from "../components/JobCardLoader";
 import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButtonLoading from "../components/PrimaryButtonLoading";
 
 export default function Home() {
   const [currentPage, setPage] = useState(1);
@@ -12,21 +13,23 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&sort_by=date`
+        `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&results_per_page=20&sort_by=date`
       );
       const newData = await res.json();
       if (newData.results) {
         setLoading(false);
-        setData(newData.results);
+        setData([...data, ...newData.results]);
       }
     };
 
     fetchData();
+    console.log(data)
   }, [currentPage]);
+
+
 
   const loadNewData = () => {
     setPage(currentPage + 1);
-    window.scrollTo(0, 0);
   };
 
   return (
@@ -78,7 +81,7 @@ export default function Home() {
             <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
             {!loading &&
               <div className="absolute z-10 bottom-14 right-1/2 translate-x-1/2">
-                <PrimaryButton onClick={loadNewData} text="Load more" />
+                <PrimaryButtonLoading onClick={loadNewData} text="Load" />
               </div>}
           </div>
         </div>
