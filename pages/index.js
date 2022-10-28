@@ -54,7 +54,7 @@ export default function Home() {
             {/* Job card list */}
             <ul className="flex flex-col space-y-6">
               {data.map((result) => {
-                const { id, title, company, location, contract_time, created } =
+                const { id, title, company, location, contract_time, created, redirect_url } =
                   result;
                 const { display_name: company_name } = company;
                 const { display_name: location_name } = location;
@@ -66,6 +66,7 @@ export default function Home() {
                       location_name={location_name}
                       title={title}
                       created={created}
+                      redirect_url={redirect_url}
                       contract_time={
                         contract_time === "full_time"
                           ? "Full-time"
