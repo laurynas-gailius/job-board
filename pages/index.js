@@ -24,6 +24,7 @@ export default function Home() {
     };
 
     fetchData();
+    console.log()
   }, [currentPage]);
 
 
@@ -44,7 +45,7 @@ export default function Home() {
           <div className="w-full">
 
             {/* Sceleton loader */}
-            {loading && Array.from({ length: 12 })
+            {!data[0] && Array.from({ length: 12 })
               .map((_, index) => (
                 <JobCardLoader key={index} />
               )
