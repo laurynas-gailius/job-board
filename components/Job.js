@@ -11,7 +11,7 @@ const Job = ({
 
 
   return (
-    <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl border bg-white border-gray-200 shadow-sm hover:shadow-md dark:shadow-md dark:bg-gray-800  dark:border-gray-700 hover:cursor-pointer transition hover:scale-105 duration-300">
+    <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl border bg-white border-gray-200 shadow-sm hover:shadow-md dark:shadow-md dark:bg-gray-800  dark:border-gray-700 hover:cursor-pointer transition sm:hover:scale-105 duration-300">
       <div className="w-full">
         <div className="flex">
           <div>
