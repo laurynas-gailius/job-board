@@ -22,8 +22,12 @@ body {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
+input {
+  outline: none;
+}
+
+a:link {
+  text-decoration: none!important;
 }
 
 a:hover {

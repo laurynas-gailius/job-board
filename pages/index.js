@@ -4,9 +4,10 @@ import Job from "../components/Job";
 import JobCardLoader from "../components/JobCardLoader";
 import PrimaryButton from "../components/PrimaryButton";
 import PrimaryButtonLoading from "../components/PrimaryButtonLoading";
+import SearchBox from "../components/SearchBox";
 
 export default function Home() {
-  const [currentPage, setPage] = useState(1);
+  const [currentPage, setPage] = useState(100);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,6 +45,10 @@ export default function Home() {
         <div className="flex relative min-h-full items-center justify-center py-12 px-4">
           <div className="w-full">
 
+            <div className="max-w-xl mb-6 mx-auto">
+              <SearchBox />
+            </div>
+
             {/* Sceleton loader */}
             {!data[0] && Array.from({ length: 12 })
               .map((_, index) => (
@@ -58,6 +63,8 @@ export default function Home() {
                   result;
                 const { display_name: company_name } = company;
                 const { display_name: location_name } = location;
+
+                console.log(redirect_url)
 
                 return (
                   <li key={id}>

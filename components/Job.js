@@ -12,9 +12,9 @@ const Job = ({
 
 
   return (
-    <a href={redirect_url} target="_blank">
-      <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl border bg-white border-gray-200 shadow-sm sm:hover:shadow-md dark:shadow-md dark:bg-gray-800 dark:border-gray-700 hover:cursor-pointer transition sm:hover:scale-105 duration-300">
-        <div className="w-full">
+    <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl decoration-0 border bg-white border-gray-200 shadow-sm sm:hover:shadow-md dark:shadow-md dark:bg-gray-800 dark:border-gray-700 hover:cursor-pointer transition sm:hover:scale-105 duration-300">
+      <div className="w-full">
+        <a href={redirect_url} target="_blank">
           <div className="flex">
             <div>
               <h2 className="font-medium text-gray-700 dark:text-gray-400">
@@ -37,9 +37,9 @@ const Job = ({
               </p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
-    </a >
+    </div >
   );
 };
 
