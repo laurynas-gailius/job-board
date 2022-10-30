@@ -5,26 +5,27 @@ import JobCardLoader from "../components/JobCardLoader";
 import PrimaryButton from "../components/PrimaryButton";
 import PrimaryButtonLoading from "../components/PrimaryButtonLoading";
 import SearchBox from "../components/SearchBox";
+import EmptyState from "../components/EmptyState";
 
 export default function Home() {
   const [currentPage, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("frontend");
+  const [country, setCountry] = useState("ca");
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const res = await fetch(
-        `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&results_per_page=20&title_only=${keyword}&sort_by=date`
+        `https://api.adzuna.com/v1/api/jobs/${country}/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&results_per_page=20&title_only=${keyword}&sort_by=date`
       );
       const newData = await res.json();
       if (newData.results) {
         setData([...data, ...newData.results]);
-        setLoading(false);
       }
+      setLoading(false);
     };
-
     fetchData();
   }, [currentPage, keyword]);
 
@@ -43,19 +44,25 @@ export default function Home() {
         <div className="flex relative min-h-full items-center justify-center py-12 px-4">
           <div className="w-full">
 
-            <div className="max-w-xl mb-6 mx-auto">
+
+            {/* Filter jobs */}
+            <div className="max-w-xl mb-12 mx-auto">
               <SearchBox changeKeyword={keyword => setKeyword(keyword)} clearData={data => setData(data)} />
             </div>
 
+            <div className="mx-auto max-w-lg text-center">
+              {!data[0] && !loading && <EmptyState keyword={keyword} changeKeyword={keyword => setKeyword(keyword)} />}
+            </div>
+
             {/* Sceleton loader */}
-            {!data[0] && Array.from({ length: 12 })
+            {!data[0] && loading && Array.from({ length: 12 })
               .map((_, index) => (
                 <JobCardLoader key={index} />
               )
               )}
 
             {/* Job card list */}
-            <ul className="flex flex-col space-y-6">
+            <ul className="flex flex-col space-y-6 z-10">
               {data.map((result) => {
                 const { id, title, company, location, contract_time, created, redirect_url } =
                   result;
@@ -81,13 +88,17 @@ export default function Home() {
               })}
             </ul>
             {/* Load more job cards */}
-            <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
-            <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
-            <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
+            {data[0] &&
+              <div>
+                <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
+                <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
+                <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
 
-            <div className="absolute z-10 bottom-14 right-1/2 translate-x-1/2">
-              {loading ? <PrimaryButtonLoading /> : <PrimaryButton onClick={loadNewData} text="Show more" />}
-            </div>
+                <div className="absolute z-10 bottom-14 right-1/2 translate-x-1/2">
+                  {loading ? <PrimaryButtonLoading /> : <PrimaryButton onClick={loadNewData} text="Show more" />}
+                </div>
+              </div>
+            }
           </div>
         </div>
       </main>
