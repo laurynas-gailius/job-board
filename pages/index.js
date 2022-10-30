@@ -7,15 +7,16 @@ import PrimaryButtonLoading from "../components/PrimaryButtonLoading";
 import SearchBox from "../components/SearchBox";
 
 export default function Home() {
-  const [currentPage, setPage] = useState(100);
+  const [currentPage, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const res = await fetch(
-        `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&results_per_page=20&sort_by=date`
+        `https://api.adzuna.com/v1/api/jobs/gb/search/${currentPage}?app_id=8cd24105&app_key=4d7672bce24eeed99eb17ac3cda79387&results_per_page=20&title_only=${keyword}&sort_by=date`
       );
       const newData = await res.json();
       if (newData.results) {
@@ -25,10 +26,7 @@ export default function Home() {
     };
 
     fetchData();
-    console.log()
-  }, [currentPage]);
-
-
+  }, [currentPage, keyword]);
 
   const loadNewData = () => {
     setPage(currentPage + 1);
@@ -46,7 +44,7 @@ export default function Home() {
           <div className="w-full">
 
             <div className="max-w-xl mb-6 mx-auto">
-              <SearchBox />
+              <SearchBox changeKeyword={keyword => setKeyword(keyword)} clearData={data => setData(data)} />
             </div>
 
             {/* Sceleton loader */}
@@ -63,8 +61,6 @@ export default function Home() {
                   result;
                 const { display_name: company_name } = company;
                 const { display_name: location_name } = location;
-
-                console.log(redirect_url)
 
                 return (
                   <li key={id}>
@@ -90,7 +86,7 @@ export default function Home() {
             <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
 
             <div className="absolute z-10 bottom-14 right-1/2 translate-x-1/2">
-              {loading ? <PrimaryButtonLoading /> : <PrimaryButton onClick={loadNewData} text="Show More" />}
+              {loading ? <PrimaryButtonLoading /> : <PrimaryButton onClick={loadNewData} text="Show more" />}
             </div>
           </div>
         </div>
