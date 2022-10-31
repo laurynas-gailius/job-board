@@ -44,7 +44,7 @@ const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="flex flex-col w-full relative text-gray-900 dark:text-white sm:hidden">
-                <button onClick={() => setOpen(!open)} className="flex mb-3 items-center p-4 text-sm font-medium text-cente bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-700 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-60 dark:border-gray-700 transition shadow-sm" type="button">{searchCountry}</button>
+                <button onClick={() => setOpen(!open)} className="flex mb-3 items-center p-4 text-sm font-medium text-cente bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 transition shadow-sm" type="button">{searchCountry}</button>
                 <svg className="absolute w-4 h-4 right-4 bottom-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                 <div className='absolute top-16 w-full z-30'>
                     {open && <DropdownMenu items={countries} changeCountry={country => setSearchCountry(country)} />}
@@ -66,7 +66,7 @@ const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
                 </div>
             </div>
 
-        </form >
+        </form>
     )
 }
 
