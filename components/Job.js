@@ -9,7 +9,18 @@ const Job = ({
   redirect_url,
 }) => {
 
+  const timeAgo = () => {
+    const now = dayjs();
+    const difference = now.diff(created, 'day');
 
+    if (difference === 0) {
+      return "Today"
+    } else if (difference === 1) {
+      return `${difference} day ago`
+    } else {
+      return `${difference} days ago`
+    }
+  }
 
   return (
     <div className="flex py-6 px-6 max-w-xl mx-auto rounded-xl decoration-0 border bg-white border-gray-200 shadow-sm sm:hover:shadow-md dark:shadow-md dark:bg-gray-800 dark:border-gray-700 hover:cursor-pointer transition sm:hover:scale-105 duration-300">
@@ -33,7 +44,7 @@ const Job = ({
             </div>
             <div className="flex items-end">
               <p className="text-sm text-gray-400 dark:text-gray-500">
-                {created}
+                {timeAgo()}
               </p>
             </div>
           </div>
