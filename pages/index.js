@@ -65,29 +65,7 @@ export default function Home() {
 
             {/* Job result list */}
             <ul className="flex flex-col space-y-6 z-10">
-              {data.map((result) => {
-                const { id, title, company, location, contract_time, created, redirect_url } =
-                  result;
-                const { display_name: company_name } = company;
-                const { display_name: location_name } = location;
-
-                return (
-                  <li key={id}>
-                    <Job
-                      company_name={company_name}
-                      location_name={location_name}
-                      title={title}
-                      created={created}
-                      redirect_url={redirect_url}
-                      contract_time={
-                        contract_time === "full_time"
-                          ? "Full-time"
-                          : "Part-time"
-                      }
-                    />
-                  </li>
-                );
-              })}
+            {data.map(result => <Job key={result.id} {...result} />)}
             </ul>
             {/* Load more job results */}
             {data[0] &&
