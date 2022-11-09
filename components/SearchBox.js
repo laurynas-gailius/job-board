@@ -3,23 +3,23 @@ import { useEffect, useState } from "react";
 import PrimaryButton from "./buttons/PrimaryButton"
 import DropdownMenu from './DropdownMenu';
 
-const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
+const countries = {
+    us: "United States",
+    ca: "Canada",
+    gb: "United Kingdom",
+    de: "Germany",
+    at: "Austria",
+    fr: "France",
+    nl: "Netherlands",
+    it: "Italy",
+    sg: "Singapore"
+}
+
+const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [searchCountry, setSearchCountry] = useState("United States");
     const [open, setOpen] = useState(false);
-
-    const countries = {
-        us: "United States",
-        ca: "Canada",
-        gb: "United Kingdom",
-        de: "Germany",
-        at: "Austria",
-        fr: "France",
-        nl: "Netherlands",
-        it: "Italy",
-        sg: "Singapore"
-    }
 
     function getObjKey(obj, value) {
         return Object.keys(obj).find(key => obj[key] === value);
@@ -29,16 +29,17 @@ const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
         e.preventDefault();
         changeKeyword(searchTerm);
         clearData([]);
-        changeCountry(getObjKey(countries, searchCountry));
     }
 
     const handleClear = () => {
         setSearchTerm("")
     };
 
-    // close dropdown
+    // close dropdown & rerun search
     useEffect(() => {
         setOpen(false);
+        clearData([]);
+        changeCountry(getObjKey(countries, searchCountry));
     }, [searchCountry]);
 
     return (

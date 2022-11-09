@@ -34,6 +34,8 @@ export default function Home() {
     setPage(currentPage + 1);
   };
 
+  console.log(country)
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Head>

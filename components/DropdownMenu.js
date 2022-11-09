@@ -7,7 +7,7 @@ const DropdownMenu = ({ items, changeCountry }) => {
                     return (
                         <div key={index} className="py-2 px-5 hover:bg-gray-100 hover:dark:bg-gray-700">
                             <li onClick={() => changeCountry(items[key])}>
-                                {open && items[key]}
+                                {open ? items[key] : null }
                             </li>
                         </div>
                     );
