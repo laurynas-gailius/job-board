@@ -53,22 +53,23 @@ export default function Home() {
 
             {/* No results found */}
             <div className="mx-auto max-w-lg text-center">
-              {!data[0] && !loading && <EmptyState keyword={keyword} changeKeyword={keyword => setKeyword(keyword)} />}
+              {!data[0] && !loading ? <EmptyState keyword={keyword} changeKeyword={keyword => setKeyword(keyword)} /> : null }
             </div>
 
             {/* Sceleton loader */}
-            {!data[0] && loading && Array.from({ length: 12 })
+            {!data[0] && loading ? Array.from({ length: 12 })
               .map((_, index) => (
                 <JobCardLoader key={index} />
               )
-              )}
+              ) : null }
 
             {/* Job result list */}
             <ul className="flex flex-col space-y-6 z-10">
             {data.map(result => <Job key={result.id} {...result} />)}
             </ul>
+
             {/* Load more job results */}
-            {data[0] &&
+            {data[0] ?
               <div>
                 <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
                 <div className="h-60 absolute inset-x-0 bottom-0 bg-gradient-to-t from-white dark:from-gray-900"></div>
@@ -78,7 +79,7 @@ export default function Home() {
                   {loading ? <PrimaryButtonLoading /> : <PrimaryButton onClick={loadNewData} text="Show more" />}
                 </div>
               </div>
-            }
+            : null}
           </div>
         </div>
       </main>

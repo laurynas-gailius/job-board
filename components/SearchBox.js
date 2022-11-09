@@ -47,7 +47,7 @@ const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
                 <button onClick={() => setOpen(!open)} className="flex mb-3 items-center p-4 text-sm font-medium text-cente bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-700 transition shadow-sm" type="button">{searchCountry}</button>
                 <svg className="absolute w-4 h-4 right-4 bottom-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                 <div className='absolute top-16 w-full z-30'>
-                    {open && <DropdownMenu items={countries} changeCountry={country => setSearchCountry(country)} />}
+                    {open ? <DropdownMenu items={countries} changeCountry={country => setSearchCountry(country)} /> : null}
                 </div>
             </div>
             <div className="flex">
@@ -58,7 +58,7 @@ const SearchBox = ({ changeKeyword, clearData, country, changeCountry }) => {
                 <div className="relative w-full">
                     <input required type="text" className="block p-4 w-full z-20 text-sm text-gray-900 dark:text-white rounded-xl sm:rounded-r-xl sm:rounded-l-none border bg-white border-gray-200 shadow-sm dark:shadow-md dark:bg-gray-800 dark:border-gray-700" placeholder="Search for a job title..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                     <div className="absolute right-24 bottom-4">
-                        {searchTerm && <XMarkIcon onClick={handleClear} className="h-5 w-5 text-gray-900 dark:text-white hover:text-gray-900/70 dark:hover:text-white/70 hover:cursor-pointer" />}
+                        {searchTerm ? <XMarkIcon onClick={handleClear} className="h-5 w-5 text-gray-900 dark:text-white hover:text-gray-900/70 dark:hover:text-white/70 hover:cursor-pointer" /> : null }
                     </div>
                     <div className="text-white absolute right-2.5 bottom-2.5">
                         <PrimaryButton text={"Search"} />
