@@ -46,7 +46,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
       <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
-          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-900 dark:focus:bg-gray-900"
           type="button"
         >
           {searchCountry}
@@ -98,7 +98,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
           <input
             required
             type="text"
-            className="z-20 block w-full rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-900 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:shadow-md sm:rounded-r-xl sm:rounded-l-none"
+            className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:shadow-md dark:hover:bg-gray-900 dark:focus:bg-gray-900 sm:rounded-r-xl sm:rounded-l-none"
             placeholder="Search for a job title..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
