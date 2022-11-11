@@ -46,7 +46,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
       <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
-          className="text-cente mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600"
           type="button"
         >
           {searchCountry}
