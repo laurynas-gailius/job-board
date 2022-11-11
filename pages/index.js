@@ -4,6 +4,7 @@ import Job from "../components/Job";
 import JobCardLoader from "../components/JobCardLoader";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import PrimaryButtonLoading from "../components/buttons/PrimaryButtonLoading";
+import Spinner from "../components/buttons/Spinner";
 import SearchBox from "../components/SearchBox";
 import EmptyState from "../components/EmptyState";
 import InfiniteScroll from "react-infinite-scroller";
@@ -45,7 +46,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="relative flex min-h-full items-center justify-center px-4 pt-6 pb-12">
+        <div className="relative flex min-h-full items-center justify-center px-4 pb-20 pt-6">
           <div className="w-full">
             {/* Search jobs */}
             <div className="mx-auto mb-6 max-w-xl">
@@ -75,7 +76,11 @@ export default function Home() {
               pageStart={currentPage}
               loadMore={loadNewData}
               hasMore={true}
-              loader={<PrimaryButtonLoading />}
+              loader={
+                <div className="absolute bottom-6 right-1/2 z-10 translate-x-1/2">
+                  <Spinner />
+                </div>
+              }
             >
               {/* Job result list */}
               <ul className="z-10 flex flex-col space-y-6">

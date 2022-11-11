@@ -1,12 +1,9 @@
 const Spinner = () => {
   return (
-    <button
-      disabled
-      className="box-content flex min-w-16 cursor-not-allowed justify-center rounded-full bg-primary/50 py-2 px-4 text-center font-medium text-white shadow-lg shadow-primary/20 transition active:bg-primary enabled:hover:bg-primary/80 dark:text-[#013E29]"
-    >
+    <button disabled>
       <svg
         aria-hidden="true"
-        className="mr-2 h-5 w-5  animate-spin fill-[#008254] text-white dark:text-white"
+        className="mr-2 h-5 w-5 animate-spin fill-primary text-gray-300 dark:text-gray-500"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
