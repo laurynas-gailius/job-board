@@ -1,4 +1,4 @@
-const PrimaryButtonLoading = () => {
+const Spinner = () => {
   return (
     <button
       disabled
@@ -24,4 +24,4 @@ const PrimaryButtonLoading = () => {
   );
 };
 
-export default PrimaryButtonLoading;
+export default Spinner;

@@ -6,7 +6,7 @@ import PrimaryButton from "../components/buttons/PrimaryButton";
 import PrimaryButtonLoading from "../components/buttons/PrimaryButtonLoading";
 import SearchBox from "../components/SearchBox";
 import EmptyState from "../components/EmptyState";
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function Home() {
   const [currentPage, setPage] = useState(1);
@@ -15,7 +15,9 @@ export default function Home() {
   const [keyword, setKeyword] = useState("frontend");
   const [country, setCountry] = useState("us");
 
-  {/* Adzuna API call */ }
+  {
+    /* Adzuna API call */
+  }
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -33,10 +35,8 @@ export default function Home() {
 
   const loadNewData = useCallback(() => {
     return setPage(currentPage + 1);
-  }, [data])
+  }, [data]);
 
-  console.log(currentPage)
-  
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Head>
@@ -45,36 +45,43 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-
-        <div className="flex relative min-h-full items-center justify-center pt-6 pb-12 px-4">
+        <div className="relative flex min-h-full items-center justify-center px-4 pt-6 pb-12">
           <div className="w-full">
-
             {/* Search jobs */}
-            <div className="max-w-xl mb-6 mx-auto">
-              <SearchBox changeKeyword={setKeyword} country={country} changeCountry={setCountry} clearData={setData} />
+            <div className="mx-auto mb-6 max-w-xl">
+              <SearchBox
+                changeKeyword={setKeyword}
+                country={country}
+                changeCountry={setCountry}
+                clearData={setData}
+              />
             </div>
 
             {/* No results found */}
             <div className="mx-auto max-w-lg text-center">
-              {!data[0] && !loading ? <EmptyState keyword={keyword} changeKeyword={setKeyword} /> : null }
+              {!data[0] && !loading ? (
+                <EmptyState keyword={keyword} changeKeyword={setKeyword} />
+              ) : null}
             </div>
 
             {/* Sceleton loader */}
-            {!data[0] && loading ? Array.from({ length: 12 })
-              .map((_, index) => (
-                <JobCardLoader key={index} />
-              )
-              ) : null }
+            {!data[0] && loading
+              ? Array.from({ length: 12 }).map((_, index) => (
+                  <JobCardLoader key={index} />
+                ))
+              : null}
 
             <InfiniteScroll
               pageStart={currentPage}
               loadMore={loadNewData}
               hasMore={true}
-              loader={<div className="loader" key={0}>Loading ...</div>}
+              loader={<PrimaryButtonLoading />}
             >
               {/* Job result list */}
-              <ul className="flex flex-col space-y-6 z-10">
-                {data.map(result => <Job key={result.id} {...result} />)}
+              <ul className="z-10 flex flex-col space-y-6">
+                {data.map((result) => (
+                  <Job key={result.id} {...result} />
+                ))}
               </ul>
             </InfiniteScroll>
 
@@ -92,7 +99,6 @@ export default function Home() {
               </div>
             : null}
             */}
-            
           </div>
         </div>
       </main>
