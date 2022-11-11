@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Job from "../components/Job";
 import JobCardLoader from "../components/JobCardLoader";
 import PrimaryButton from "../components/buttons/PrimaryButton";
@@ -50,8 +51,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <div className="absolute -top-44 right-0 left-0 text-center opacity-80 sm:-top-96">
+          <Image src="/blob.png" height={800} width={800} />
+        </div>
         <div className="relative flex min-h-full items-center justify-center px-4 pb-20 pt-6">
           <div className="w-full">
+            {/* Hero */}
+            <div className="mx-auto mb-4 max-w-xl py-10 text-center">
+              <p className="mb-1 text-sm dark:text-primary">Job Board</p>
+              <h1 className="text-2xl font-semibold dark:text-white">
+                Find Your New Job
+              </h1>
+            </div>
+
             {/* Search jobs */}
             <div className="mx-auto mb-6 max-w-xl">
               <SearchBox
@@ -76,6 +88,7 @@ export default function Home() {
                 ))
               : null}
 
+            {/* Infinite scroll, load more job posts */}
             <InfiniteScroll
               pageStart={currentPage}
               loadMore={loadNewData}
@@ -94,7 +107,7 @@ export default function Home() {
               </ul>
             </InfiniteScroll>
 
-            {/* Load more job results */}
+            {/* Pagination, load more job posts */}
             {/* 
             {data[0] ?
               <div>
