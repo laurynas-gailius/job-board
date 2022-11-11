@@ -51,15 +51,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="absolute -top-44 right-0 left-0 text-center opacity-80 sm:-top-96">
-          <Image src="/blob.png" height={800} width={800} />
+        <div className="absolute top-20 right-0 left-0 text-center opacity-80 sm:-top-64">
+          <Image src="/blob.png" height={500} width={500} />
         </div>
         <div className="relative flex min-h-full items-center justify-center px-4 pb-20 pt-6">
           <div className="w-full">
             {/* Hero */}
             <div className="mx-auto mb-4 max-w-xl py-10 text-center">
-              <p className="mb-1 text-sm dark:text-primary">Job Board</p>
-              <h1 className="text-2xl font-semibold dark:text-white">
+              <p className="mb-1 text-sm text-gray-800 dark:text-primary">
+                Job Board
+              </p>
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 Find Your New Job
               </h1>
             </div>
