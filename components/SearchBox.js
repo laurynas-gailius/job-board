@@ -44,13 +44,14 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* mobile: location dropdown */}
       <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
           className="mb-3 flex items-center rounded-xl border border-gray-200 bg-white p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
           type="button"
         >
-          <span className="text-gray-400">Where:&nbsp;</span>
+          <span className="font-normal text-gray-400">Where:&nbsp;</span>
           {searchCountry}
         </button>
         <svg
@@ -71,12 +72,14 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
           ) : null}
         </div>
       </div>
+      {/* desktop: location dropdown */}
       <div className="flex">
         <button
           onClick={() => setOpen(!open)}
           className="z-10 hidden flex-shrink-0 items-center rounded-l-xl border-t border-l border-b border-gray-200 bg-gray-50 px-4 pr-2.5 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:hover:bg-neutral sm:inline-flex"
           type="button"
         >
+          <span className="font-normal text-gray-400">Where:&nbsp;</span>
           {searchCountry}{" "}
           <svg
             className="ml-1 h-4 w-4"
@@ -91,11 +94,12 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
             ></path>
           </svg>
         </button>
-        <div className="absolute top-24 z-30 hidden sm:block">
+        <div className="absolute top-60 z-30 hidden sm:block">
           {open && (
             <DropdownMenu items={countries} changeCountry={setSearchCountry} />
           )}
         </div>
+        {/* job search input */}
         <div className="relative w-full">
           <input
             required

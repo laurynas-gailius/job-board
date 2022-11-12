@@ -94,7 +94,7 @@ export default function Home() {
             <InfiniteScroll
               pageStart={currentPage}
               loadMore={loadNewData}
-              hasMore={data[0]}
+              hasMore={Boolean(data[0])}
               loader={
                 <div className="absolute bottom-6 right-1/2 z-10 translate-x-1/2">
                   <Spinner />
