@@ -46,7 +46,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
       <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
-          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-900 dark:focus:bg-gray-900"
+          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
           type="button"
         >
           {searchCountry}
@@ -72,7 +72,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
       <div className="flex">
         <button
           onClick={() => setOpen(!open)}
-          className="z-10 hidden flex-shrink-0 items-center rounded-l-xl border-t border-l border-b border-gray-200 bg-gray-50 px-4 pr-2.5 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 sm:inline-flex"
+          className="z-10 hidden flex-shrink-0 items-center rounded-l-xl border-t border-l border-b border-gray-200 bg-gray-50 px-4 pr-2.5 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:bg-gray-100 focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:hover:bg-neutral sm:inline-flex"
           type="button"
         >
           {searchCountry}{" "}
@@ -98,7 +98,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
           <input
             required
             type="text"
-            className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:shadow-md dark:hover:bg-gray-900 dark:focus:bg-gray-900 sm:rounded-r-xl sm:rounded-l-none"
+            className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:shadow-md dark:hover:bg-neutral dark:focus:bg-neutral sm:rounded-r-xl sm:rounded-l-none"
             placeholder="Search for a job title..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

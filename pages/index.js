@@ -40,7 +40,7 @@ export default function Home() {
   }, [data]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-neutral">
       <Head>
         <title>Job Board</title>
         <meta name="description" content="Find your next job." />

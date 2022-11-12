@@ -11,7 +11,7 @@ const EmptyState = ({ keyword, changeKeyword }) => {
 
   return (
     <div>
-      <h2 className="mb-4 font-medium text-gray-700 dark:text-gray-400">
+      <h2 className="mb-4 font-medium text-gray-700 dark:text-gray-200">
         {`No results for "${keyword}", try:`}
       </h2>
       <ul className="flex flex-wrap justify-center gap-3">

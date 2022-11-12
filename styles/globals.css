@@ -5,7 +5,7 @@
 @layer base {
   html {
     @apply bg-white;
-    @apply dark:bg-gray-900;
+    @apply dark:bg-neutral;
   }
 }
 
@@ -27,7 +27,7 @@ input {
 }
 
 a:link {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 a:hover {

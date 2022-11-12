@@ -15,7 +15,7 @@ const Job = (props) => {
   };
 
   return (
-    <li className="z-10 mx-auto flex w-full max-w-xl rounded-xl border border-gray-200 bg-white py-6 px-6 decoration-0 shadow-sm transition duration-300 hover:cursor-pointer dark:border-gray-700 dark:bg-gray-800 dark:shadow-md sm:hover:scale-105 sm:hover:shadow-md">
+    <li className="z-10 mx-auto flex w-full max-w-xl rounded-xl border border-gray-200 bg-white py-6 px-6 decoration-0 shadow-sm transition duration-300 hover:cursor-pointer dark:border-neutral3 dark:bg-neutral2 dark:shadow-md dark:hover:border-neutral4 sm:hover:scale-105 sm:hover:shadow-md">
       <div className="w-full">
         <a href={props.redirect_url} target="_blank">
           <div className="flex">
