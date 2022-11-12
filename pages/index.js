@@ -110,7 +110,7 @@ export default function Home() {
                 ))}
               </ul>
             </InfiniteScroll>
-            {!loading ? (
+            {loading ? (
               <p className="absolute bottom-10 right-1/2 z-10 translate-x-1/2 text-sm text-gray-400 dark:text-gray-500">
                 {copy[Math.floor(Math.random() * 3)]}
               </p>
