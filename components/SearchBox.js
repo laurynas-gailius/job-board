@@ -2,6 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import PrimaryButton from "./buttons/PrimaryButton";
 import DropdownMenu from "./DropdownMenu";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const countries = {
   us: "United States",
@@ -46,9 +47,10 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
       <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
-          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-gray-50 p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
+          className="mb-3 flex items-center rounded-xl border border-gray-200 bg-white p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
           type="button"
         >
+          <span className="text-gray-400">Where:&nbsp;</span>
           {searchCountry}
         </button>
         <svg
@@ -98,11 +100,15 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
           <input
             required
             type="text"
-            className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:shadow-md dark:hover:bg-neutral dark:focus:bg-neutral sm:rounded-r-xl sm:rounded-l-none"
+            className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 pl-9 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:shadow-md dark:hover:bg-neutral dark:focus:bg-neutral sm:rounded-r-xl sm:rounded-l-none"
             placeholder="Search for a job title..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          <div className="absolute left-4 bottom-5">
+            <MagnifyingGlassIcon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+          </div>
+
           <div className="absolute right-24 bottom-4">
             {searchTerm ? (
               <XMarkIcon
