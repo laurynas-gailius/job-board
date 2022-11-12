@@ -10,6 +10,8 @@ import SearchBox from "../components/SearchBox";
 import EmptyState from "../components/EmptyState";
 import InfiniteScroll from "react-infinite-scroller";
 
+const copy = ["More incoming!", "You rock!", "Let's go!"];
+
 export default function Home() {
   const [currentPage, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -54,7 +56,7 @@ export default function Home() {
         <div className="absolute top-20 right-0 left-0 text-center opacity-80 sm:-top-64">
           <Image src="/blob.png" height={500} width={500} />
         </div>
-        <div className="relative flex min-h-full items-center justify-center px-4 pb-20 pt-6">
+        <div className="relative flex min-h-full items-center justify-center px-4 pb-32 pt-6">
           <div className="w-full">
             {/* Hero */}
             <div className="mx-auto mb-4 max-w-xl py-10 text-center">
@@ -96,7 +98,7 @@ export default function Home() {
               loadMore={loadNewData}
               hasMore={Boolean(data[0])}
               loader={
-                <div className="absolute bottom-6 right-1/2 z-10 translate-x-1/2">
+                <div className="absolute bottom-16 right-1/2 z-10 mx-auto translate-x-1/2 pl-1">
                   <Spinner />
                 </div>
               }
@@ -108,6 +110,11 @@ export default function Home() {
                 ))}
               </ul>
             </InfiniteScroll>
+            {!loading ? (
+              <p className="absolute bottom-10 right-1/2 z-10 translate-x-1/2 text-sm text-gray-400 dark:text-gray-500">
+                {copy[Math.floor(Math.random() * 3)]}
+              </p>
+            ) : null}
 
             {/* Pagination, load more job posts */}
             {/* 
