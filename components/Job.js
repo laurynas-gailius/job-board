@@ -42,7 +42,9 @@ const Job = (props) => {
               </p>
             </div> */}
             <div className="flex items-center">
-              <p className="text-sm font-light text-primary">Read more</p>
+              <p className="text-sm font-normal text-primary dark:font-light">
+                Read more
+              </p>
               <ArrowSmallRightIcon className="ml-1 h-4 w-4 text-primary" />
             </div>
           </div>

@@ -10,8 +10,6 @@ import SearchBox from "../components/SearchBox";
 import EmptyState from "../components/EmptyState";
 import InfiniteScroll from "react-infinite-scroller";
 
-const copy = ["More incoming!", "You rock!", "Let's go!"];
-
 export default function Home() {
   const [currentPage, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -60,7 +58,7 @@ export default function Home() {
           <div className="w-full">
             {/* Hero */}
             <div className="mx-auto mb-4 max-w-xl py-10 text-center">
-              <p className="mb-1 text-sm text-gray-800 dark:text-primary">
+              <p className="mb-1 text-sm text-gray-600 dark:text-primary">
                 Job Board
               </p>
               <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -110,11 +108,6 @@ export default function Home() {
                 ))}
               </ul>
             </InfiniteScroll>
-            {loading ? (
-              <p className="absolute bottom-10 right-1/2 z-10 translate-x-1/2 text-sm text-gray-400 dark:text-gray-500">
-                {copy[Math.floor(Math.random() * 3)]}
-              </p>
-            ) : null}
 
             {/* Pagination, load more job posts */}
             {/* 
