@@ -24,20 +24,20 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
   let menuRef = useRef();
 
   // close dropdown by clicking outside
-  useEffect(() => {
-    let handler = (event) => {
-      if (!menuRef.current.contains(event.target)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
+  // useEffect(() => {
+  //   let handler = (event) => {
+  //     if (!menuRef.current.contains(event.target)) setOpen(false);
+  //   };
+  //   document.addEventListener("mousedown", handler);
 
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // });
 
-  function getObjKey(obj, value) {
-    return Object.keys(obj).find((key) => obj[key] === value);
-  }
+  // function getObjKey(obj, value) {
+  //   return Object.keys(obj).find((key) => obj[key] === value);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
   return (
     <form onSubmit={handleSubmit}>
       {/* mobile: location dropdown */}
-      <div className="relative z-10 flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
+      <div className="relative flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
         <button
           onClick={() => setOpen(!open)}
           className="mb-3 flex items-center rounded-xl border border-gray-200 bg-white p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
@@ -80,7 +80,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
             clipRule="evenodd"
           ></path>
         </svg>
-        <div ref={menuRef} className="absolute top-16 z-30 w-full">
+        <div className="absolute top-16 z-30 w-full">
           {open ? (
             <DropdownMenu items={countries} changeCountry={setSearchCountry} />
           ) : null}
@@ -108,7 +108,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
             ></path>
           </svg>
         </button>
-        <div ref={menuRef} className="absolute top-60 z-30 hidden sm:block">
+        <div className="absolute top-60 z-30 hidden sm:block">
           {open ? (
             <DropdownMenu items={countries} changeCountry={setSearchCountry} />
           ) : null}
