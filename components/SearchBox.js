@@ -21,7 +21,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
   const [searchCountry, setSearchCountry] = useState("United States");
   const [open, setOpen] = useState(false);
 
-  let menuRef = useRef();
+  // let menuRef = useRef();
 
   // close dropdown by clicking outside
   // useEffect(() => {
@@ -35,9 +35,9 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
   //   };
   // });
 
-  // function getObjKey(obj, value) {
-  //   return Object.keys(obj).find((key) => obj[key] === value);
-  // }
+  function getObjKey(obj, value) {
+    return Object.keys(obj).find((key) => obj[key] === value);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
