@@ -1,5 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PrimaryButton from "./buttons/PrimaryButton";
 import DropdownMenu from "./DropdownMenu";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
@@ -20,6 +20,20 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCountry, setSearchCountry] = useState("United States");
   const [open, setOpen] = useState(false);
+
+  let menuRef = useRef();
+
+  // close dropdown by clicking outside
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   function getObjKey(obj, value) {
     return Object.keys(obj).find((key) => obj[key] === value);
@@ -94,10 +108,10 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
             ></path>
           </svg>
         </button>
-        <div className="absolute top-60 z-30 hidden sm:block">
-          {open && (
+        <div ref={menuRef} className="absolute top-60 z-30 hidden sm:block">
+          {open ? (
             <DropdownMenu items={countries} changeCountry={setSearchCountry} />
-          )}
+          ) : null}
         </div>
         {/* job search input */}
         <div className="relative w-full">
