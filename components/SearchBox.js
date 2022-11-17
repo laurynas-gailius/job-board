@@ -18,7 +18,13 @@ const countries = {
   sg: "Singapore",
 };
 
-const SearchBox = ({ changeKeyword, clearData, changeCountry, keyword }) => {
+const SearchBox = ({
+  changeKeyword,
+  clearData,
+  changeCountry,
+  changeLoading,
+  keyword,
+}) => {
   const [searchCountry, setSearchCountry] = useState("United States");
   const [open, setOpen] = useState(false);
 
@@ -46,6 +52,7 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry, keyword }) => {
     e.preventDefault();
     changeKeyword(searchTermContext.searchTerm);
     keyword === searchTermContext.searchTerm ? null : clearData([]);
+    keyword === searchTermContext.searchTerm ? null : changeLoading(true);
   };
 
   const handleClear = () => {

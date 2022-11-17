@@ -70,18 +70,12 @@ export default function Home() {
             <div className="mx-auto mb-6 max-w-xl">
               <SearchBox
                 changeKeyword={setKeyword}
+                changeLoading={setLoading}
                 country={country}
                 changeCountry={setCountry}
                 clearData={setData}
                 keyword={keyword}
               />
-            </div>
-
-            {/* No results found */}
-            <div className="mx-auto max-w-lg text-center">
-              {!data[0] && !loading ? (
-                <EmptyState keyword={keyword} changeKeyword={setKeyword} />
-              ) : null}
             </div>
 
             {/* Sceleton loader */}
@@ -90,6 +84,13 @@ export default function Home() {
                   <JobCardLoader key={index} />
                 ))
               : null}
+
+            {/* No results found */}
+            <div className="mx-auto max-w-lg text-center">
+              {!data[0] && !loading ? (
+                <EmptyState keyword={keyword} changeKeyword={setKeyword} />
+              ) : null}
+            </div>
 
             {/* Infinite scroll, load more job posts */}
             <InfiniteScroll
