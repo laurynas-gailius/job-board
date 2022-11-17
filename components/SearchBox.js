@@ -63,6 +63,7 @@ const SearchBox = ({
   useEffect(() => {
     setOpen(false);
     clearData([]);
+    changeLoading(true);
     changeCountry(getObjKey(countries, searchCountry));
   }, [searchCountry]);
 
