@@ -73,6 +73,7 @@ export default function Home() {
                 country={country}
                 changeCountry={setCountry}
                 clearData={setData}
+                keyword={keyword}
               />
             </div>
 
