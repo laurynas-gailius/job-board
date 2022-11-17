@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import AppContext from "../AppContext";
+
 const PillButton = ({ text, changeKeyword, suggestion }) => {
+  const searchTermContext = useContext(AppContext);
+
   const handleSubmit = (e) => {
     changeKeyword(suggestion);
+    searchTermContext.setSearchTerm(suggestion);
   };
 
   return (

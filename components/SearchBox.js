@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState, useRef } from "react";
 import PrimaryButton from "./buttons/PrimaryButton";
@@ -17,9 +19,10 @@ const countries = {
 };
 
 const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchCountry, setSearchCountry] = useState("United States");
   const [open, setOpen] = useState(false);
+
+  const searchTermContext = useContext(AppContext);
 
   // let menuRef = useRef();
 
@@ -41,12 +44,12 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    changeKeyword(searchTerm);
+    changeKeyword(searchTermContext.searchTerm);
     clearData([]);
   };
 
   const handleClear = () => {
-    setSearchTerm("");
+    searchTermContext.setSearchTerm("");
   };
 
   // close dropdown & rerun search
@@ -120,15 +123,15 @@ const SearchBox = ({ changeKeyword, clearData, changeCountry }) => {
             type="text"
             className="z-20 block w-full cursor-pointer rounded-xl border border-gray-200 bg-white p-4 pl-9 text-sm text-gray-900 shadow-sm transition focus:border-primary dark:border-neutral3 dark:bg-neutral2 dark:text-white dark:shadow-md dark:hover:bg-neutral dark:focus:bg-neutral sm:rounded-r-xl sm:rounded-l-none"
             placeholder="Search for a job title..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTermContext.searchTerm}
+            onChange={(e) => searchTermContext.setSearchTerm(e.target.value)}
           />
           <div className="absolute left-4 bottom-5">
             <MagnifyingGlassIcon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
           </div>
 
           <div className="absolute right-24 bottom-4">
-            {searchTerm ? (
+            {searchTermContext.searchTerm ? (
               <XMarkIcon
                 onClick={handleClear}
                 className="h-5 w-5 text-gray-900 hover:cursor-pointer hover:text-gray-900/70 dark:text-white dark:hover:text-white/70"
