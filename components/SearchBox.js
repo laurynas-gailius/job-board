@@ -24,6 +24,7 @@ const SearchBox = ({
   changeCountry,
   changeLoading,
   keyword,
+  country,
 }) => {
   const [searchCountry, setSearchCountry] = useState("United States");
   const [open, setOpen] = useState(false);
@@ -95,7 +96,11 @@ const SearchBox = ({
         </svg>
         <div className="absolute top-16 z-30 w-full">
           {open ? (
-            <DropdownMenu items={countries} changeCountry={setSearchCountry} />
+            <DropdownMenu
+              items={countries}
+              changeCountry={setSearchCountry}
+              country={country}
+            />
           ) : null}
         </div>
       </div>
@@ -123,7 +128,11 @@ const SearchBox = ({
         </button>
         <div className="absolute top-60 z-30 hidden sm:block">
           {open ? (
-            <DropdownMenu items={countries} changeCountry={setSearchCountry} />
+            <DropdownMenu
+              items={countries}
+              changeCountry={setSearchCountry}
+              country={country}
+            />
           ) : null}
         </div>
         {/* job search input */}
