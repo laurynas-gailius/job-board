@@ -67,7 +67,7 @@ export default function Home() {
             </div>
 
             {/* Search jobs */}
-            <div className="mx-auto mb-6 max-w-xl">
+            <div className="z-20 mx-auto mb-6 max-w-xl">
               <SearchBox
                 changeKeyword={setKeyword}
                 changeLoading={setLoading}
