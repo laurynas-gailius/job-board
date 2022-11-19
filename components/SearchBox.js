@@ -84,7 +84,7 @@ const SearchBox = ({
     <form onSubmit={handleSubmit}>
       <div ref={domNode}>
         {/* mobile: location dropdown */}
-        <div className=" relative z-10 flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
+        <div className="relative z-20 flex w-full flex-col text-gray-900 dark:text-white sm:hidden">
           <button
             onClick={() => setOpen(!open)}
             className="mb-3 flex items-center rounded-xl border border-gray-200 bg-white p-4 text-center text-sm font-medium shadow-sm transition hover:bg-gray-100 focus:border-primary focus:bg-white focus:outline-none dark:border-neutral3 dark:bg-neutral2 dark:hover:bg-neutral dark:focus:bg-neutral"
