@@ -51,8 +51,10 @@ const SearchBox = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     changeKeyword(searchTermContext.searchTerm);
-    keyword === searchTermContext.searchTerm ? null : clearData([]);
-    keyword === searchTermContext.searchTerm ? null : changeLoading(true);
+    if (keyword !== searchTermContext.searchTerm) {
+      clearData([]);
+      changeLoading(true);
+    }
   };
 
   const handleClear = () => {
